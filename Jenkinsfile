@@ -1,6 +1,7 @@
 pipeline {
-    agent any
-
+    agent {
+	label "vinod"
+    }
     parameters {
         booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
         choice(name: 'action', choices: ['apply', 'destroy'], description: 'Select the action to perform')
@@ -15,7 +16,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/CodeSagarOfficial/jenkins-scripts.git'
+                git branch: 'sprint1_dev', url: 'https://github.com/surajssr435/terraform-jenkins-pipeline.git'
             }
         }
         stage('Terraform init') {
